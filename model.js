@@ -131,7 +131,7 @@ class SAC {
 
     const hidden = opts.hidden ?? 256;
     this.hidden = hidden;
-    this.lr = opts.lr ?? 3e-4;
+    this.lr = opts.lr ?? 3e-4; // learning rate
     this.actor = buildActor(stateDim, actionDim, hidden);
     this.q1 = buildCritic(stateDim, actionDim, hidden);
     this.q2 = buildCritic(stateDim, actionDim, hidden);
@@ -142,10 +142,10 @@ class SAC {
 
     this.logAlpha = tf.variable(tf.scalar(0.0));
 
-    const lr = opts.lr ?? 3e-4;
-    this.actorOpt = tf.train.adam(lr);
-    this.criticOpt = tf.train.adam(lr);
-    this.alphaOpt = tf.train.adam(lr);
+    // const lr = opts.lr ?? 3e-4;
+    this.actorOpt = tf.train.adam(this.lr);
+    this.criticOpt = tf.train.adam(this.lr);
+    this.alphaOpt = tf.train.adam(this.lr);
 
     this.buffer = new ReplayBuffer(opts.bufferSize ?? 100000);
   }

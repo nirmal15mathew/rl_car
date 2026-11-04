@@ -19,7 +19,7 @@ const STAGE_HELP = {
 };
 
 const WARMUP = 1000;          // random actions before learning starts
-const MAX_EP_STEPS = 700;    // a full lap is roughly 700-1000 steps, so 600 was too short
+const MAX_EP_STEPS = 2200;    // a full lap is roughly 700-1000 steps, so 600 was too short
 const TRAIN_EVERY = 1;        // one gradient step per N sim steps
 
 // ---- UI state ----
@@ -39,8 +39,8 @@ function setup() {
     actionHigh: [1, 1],
     hidden: 128,
     batchSize: 64,
-    alphaLr: 1e-5,
-    lr: 1e-6
+    alphaLr: 5e-4,
+    lr: 5e-5
   });
 
   trail = new Trail();
